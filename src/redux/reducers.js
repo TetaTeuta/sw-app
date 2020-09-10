@@ -1,18 +1,38 @@
-import { GET_LIST } from "./actions";
+import { GET_LIST_REQUEST } from "./actions";
+import { GET_LIST_SUCESS } from "./actions";
+import { GET_LIST_ERROR } from "./actions";
 
 const initialState = {
-  list: 10
+  loading: false,
+  list: [],
+  error: ""
 };
 
-const listReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_LIST:
+    case GET_LIST_REQUEST:
       return {
-        list: state.list - 1
+        ...state,
+        loading: true
       };
+
+    case GET_LIST_SUCESS:
+      return {
+        loading: false,
+        list: action.payload,
+        error: ""
+      };
+
+    case GET_LIST_ERROR:
+      return {
+        loading: false,
+        list: [],
+        error: action.payload
+      };
+
     default:
       return state;
   }
 };
 
-export default listReducer;
+export default reducer;

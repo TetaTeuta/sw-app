@@ -1,12 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
-import { getList } from "../redux/actions";
+import { fetchApi } from "../redux/actions";
 
-function ListContainer(props) {
+function ListContainer({ list, fetchApi }) {
+  useEffect(() => {
+    fetchApi();
+  }, []);
+
   return (
     <div>
-      <h1>Number {props.list}</h1>
-      <button onClick={props.getList}>Minus one</button>
+      <h2>People List</h2>
+      <div>
+        {list && list.people && list.people.map((user) => <p>{user.name}</p>)}
+      </div>
     </div>
   );
 }
@@ -21,7 +28,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   //maps dispatch of action creator as a prop of a component
   return {
-    getList: () => dispatch(getList())
+    fetchApi: () => dispatch(fetchApi())
   };
 };
 
