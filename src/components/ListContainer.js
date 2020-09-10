@@ -12,15 +12,17 @@ function ListContainer(props) {
 }
 
 const mapStateToProps = (state) => {
+  //state from Redux store is mapped to props
   return {
     list: state.list
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
+  //maps dispatch of action creator as a prop of a component
   return {
     getList: () => dispatch(getList())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ListContainer); //connects react component to Redux store
