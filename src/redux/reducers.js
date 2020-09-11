@@ -12,7 +12,6 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_LIST_REQUEST:
       return {
-        ...state,
         loading: true
       };
 

@@ -10,18 +10,19 @@ function ListContainer({ list, fetchApi }) {
 
   return (
     <div>
-      <h2>People List</h2>
+      <h2>SW List</h2>
       <div>
-        {list && list.people && list.people.map((user) => <p>{user.name}</p>)}
+        {list && list.people && list.map((user) => <p>{user.results.name}</p>)}
       </div>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   //state from Redux store is mapped to props
   return {
-    list: state.list
+    list: state.people
   };
 };
 

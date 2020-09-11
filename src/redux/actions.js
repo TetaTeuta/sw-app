@@ -10,8 +10,9 @@ export const fetchApi = () => {
     axios
       .get("https://swapi.dev/api/people/")
       .then((response) => {
-        const people = response.results;
+        const people = response.data.results;
         dispatch(getListSucess(people)); //here we dispatch getList action which stores list from reducers
+        console.log(people);
       })
       .catch((error) => {
         const errorMsg = error.message;
