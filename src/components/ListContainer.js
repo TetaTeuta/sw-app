@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchApi } from "../redux/actions";
+import SingleView from "./ItemCard";
+import "../styles/ListContainer.scss";
 
 function ListContainer({ listData, fetchApi }) {
   console.log(listData);
@@ -11,10 +13,13 @@ function ListContainer({ listData, fetchApi }) {
   }, []);
 
   return (
-    <div>
-      <h2>List</h2>
+    <div className="card__grid--container">
       <div>
-        {listData && listData.list && listData.list.map((item) => item.name)}
+        {listData.list.map((item) => (
+          <div className="card__grid--item">
+            <SingleView item={item} />
+          </div>
+        ))}
       </div>
     </div>
   );
