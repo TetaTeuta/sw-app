@@ -3,16 +3,18 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchApi } from "../redux/actions";
 
-function ListContainer({ list, fetchApi }) {
+function ListContainer({ listData, fetchApi }) {
+  console.log(listData);
+  //list data is destructured from props
   useEffect(() => {
     fetchApi();
   }, []);
 
   return (
     <div>
-      <h2>SW List</h2>
+      <h2>List</h2>
       <div>
-        {list && list.people && list.map((user) => <p>{user.results.name}</p>)}
+        {listData && listData.list && listData.list.map((item) => item.name)}
       </div>
     </div>
   );
@@ -22,7 +24,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   //state from Redux store is mapped to props
   return {
-    list: state.people
+    listData: state
   };
 };
 
