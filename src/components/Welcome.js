@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import ListContainer from "./ListContainer";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Route } from "react-router-dom";
 
 export default class Welcome extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class Welcome extends Component {
         <Link to={`/list`}>
           <Button>Next</Button>
         </Link>
-        <Route exact path="/list" render={<ListContainer />}></Route>
+        <Route exact path="/list" component={<ListContainer />}></Route>
       </div>
     );
   }
